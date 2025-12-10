@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '../components/Hero';
 import Features from '../components/Features';
 import ProductCard from '../components/ProductCard';
+import './Home.css';
 
 const mockProducts = [
     {
@@ -40,25 +41,25 @@ const Home = () => {
             <Features />
 
             {/* Featured Products */}
-            <section className="py-24">
+            <section className="home-section">
                 <div className="container">
-                    <div className="flex justify-between items-end mb-12">
+                    <div className="home-section-header">
                         <div>
-                            <h2 className="text-3xl font-heading font-bold text-white mb-2">Detailed Selection</h2>
-                            <p className="text-gray-400">Top-rated solar essentials for your home.</p>
+                            <h2 className="home-section-title">Detailed Selection</h2>
+                            <p className="home-section-subtitle">Top-rated solar essentials for your home.</p>
                         </div>
-                        <a href="/products" className="text-yellow-400 hover:text-yellow-300 font-medium hidden md:block">
+                        <a href="/products" className="home-view-all-link">
                             View All Products &rarr;
                         </a>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="home-products-grid">
                         {mockProducts.map((product) => (
                             <ProductCard key={product.id} product={product} />
                         ))}
                     </div>
 
-                    <div className="mt-12 text-center md:hidden">
+                    <div className="home-mobile-action">
                         <a href="/products" className="btn btn-secondary">View All Products</a>
                     </div>
                 </div>

@@ -14,6 +14,8 @@
   /* White/Off-white */
   --color-text-dim: #94a3b8;
   /* Dimmed Text */
+  --color-black: #000000;
+  --color-white: #ffffff;
 
   --font-body: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
@@ -46,8 +48,9 @@ h6 {
 /* Utilities */
 .container {
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .text-gradient {
@@ -55,6 +58,19 @@ h6 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+}
+
+/* Layout */
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg);
+}
+
+.main-content {
+  flex-grow: 1;
 }
 
 .glass-panel {
@@ -64,8 +80,11 @@ h6 {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Buttons */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   font-weight: 600;
@@ -73,15 +92,17 @@ h6 {
   cursor: pointer;
   border: none;
   text-decoration: none;
+  font-family: var(--font-body);
 }
 
 .btn-primary {
   background: var(--color-primary);
-  color: #0f172a;
+  color: var(--color-bg);
 }
 
 .btn-primary:hover {
   background: #f59e0b;
+  /* Slightly darker gold */
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
 }
@@ -95,16 +116,138 @@ h6 {
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--color-text);
+  color: var(--color-white);
 }
 
-.flex-center {
+/* Flexbox Utilities */
+.flex {
   display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
   align-items: center;
+}
+
+.justify-center {
   justify-content: center;
 }
 
-.grid-cols-3 {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.gap-8 {
   gap: 2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Grid Utilities */
+.grid {
+  display: grid;
+}
+
+/* Helpers */
+.text-center {
+  text-align: center;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.pt-32 {
+  padding-top: 8rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+.text-yellow-400 {
+  color: var(--color-primary);
+}
+
+.text-gray-300 {
+  color: #d1d5db;
+}
+
+.text-gray-400 {
+  color: #9ca3af;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .md\:flex {
+    display: flex;
+  }
+
+  .md\:hidden {
+    display: none;
+  }
+
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

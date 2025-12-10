@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductCard from '../components/ProductCard';
+import './Products.css';
 
 // Extended mock data for the full products page
 const products = [
@@ -61,17 +62,17 @@ const products = [
 
 const Products = () => {
     return (
-        <div className="pt-24 pb-24">
+        <div className="products-page">
             <div className="container">
-                <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">Our Products</h1>
-                    <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                <div className="products-header">
+                    <h1 className="products-title">Our Products</h1>
+                    <p className="products-subtitle">
                         Everything you need to power your independence.
                         From panels to batteries, we have the best solar tech.
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="products-grid">
                     {products.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}

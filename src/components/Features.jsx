@@ -1,54 +1,49 @@
+
 import React from 'react';
-import { Sun, Battery, Leaf } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { DollarSign, ShieldCheck, Battery, Leaf } from 'lucide-react';
+import './Features.css';
 
 const features = [
     {
-        icon: <Sun className="w-8 h-8 text-yellow-500" />,
-        title: "High Efficiency Panels",
-        description: "Our panels capture up to 25% more sunlight than standard models, ensuring maximum energy production even on cloudy days."
+        icon: DollarSign,
+        title: "Maximized Savings",
+        description: "Slash your electricity bills by up to 90% with our high-efficiency systems tailored to your usage."
     },
     {
-        icon: <Battery className="w-8 h-8 text-blue-500" />,
-        title: "Smart Storage Solutions",
-        description: "Store excess energy with our advanced batteries. Power your home at night or during outages with zero interruption."
+        icon: ShieldCheck,
+        title: "25-Year Protection",
+        description: "Rest easy with our industry-leading full system warranty covering panels, inverters, and labor."
     },
     {
-        icon: <Leaf className="w-8 h-8 text-green-500" />,
-        title: "Sustainable & Durable",
-        description: "Built to last 25+ years with eco-friendly materials. Reduce your carbon footprint while saving on electricity bills."
+        icon: Battery,
+        title: "Energy Independence",
+        description: "Protect your home from outages and rising rates with integrated battery backup solutions."
+    },
+    {
+        icon: Leaf,
+        title: "Eco-Friendly Impact",
+        description: "Reduce your carbon footprint significantly and contribute to a cleaner, greener planet."
     }
 ];
 
 const Features = () => {
     return (
-        <section className="py-24 bg-surface/30">
+        <section className="features-section">
             <div className="container">
-                <div className="text-center mb-16">
-                    <span className="text-green-400 font-medium tracking-wider uppercase text-sm">Why Choose Us</span>
-                    <h2 className="text-4xl font-heading font-bold text-white mt-2 mb-4">
-                        Energy Solutions for <span className="text-gradient">Tomorrow</span>
-                    </h2>
+                <div className="features-header">
+                    <h2 className="features-title">Why Choose SolarNova?</h2>
+                    <p className="features-subtitle">We deliver premium technology combined with expert installation.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="features-grid">
                     {features.map((feature, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: index * 0.2 }}
-                            viewport={{ once: true }}
-                            className="glass-panel p-8 rounded-2xl border border-white/5 hover:border-yellow-500/30 transition-colors"
-                        >
-                            <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mb-6">
-                                {feature.icon}
+                        <div key={index} className="feature-card">
+                            <div className="feature-icon-wrapper">
+                                <feature.icon size={28} />
                             </div>
-                            <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                            <p className="text-gray-400 leading-relaxed">
-                                {feature.description}
-                            </p>
-                        </motion.div>
+                            <h3 className="feature-card-title">{feature.title}</h3>
+                            <p className="feature-card-desc">{feature.description}</p>
+                        </div>
                     ))}
                 </div>
             </div>

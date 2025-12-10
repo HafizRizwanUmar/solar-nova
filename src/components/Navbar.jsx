@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Sun, ShoppingCart, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import './Navbar.css';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -16,22 +17,21 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass-panel py-4' : 'bg-transparent py-6'
-            }`}>
-            <div className="container flex items-center justify-between">
+        <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
+            <div className="container navbar-content">
                 {/* Logo */}
-                <Link to="/" className="flex items-center gap-2 text-2xl font-bold font-heading">
-                    <Sun className="text-yellow-400 w-8 h-8" />
-                    <span className="text-white tracking-wide">Solar<span className="text-yellow-400">Nova</span></span>
+                <Link to="/" className="nav-logo">
+                    <Sun className="nav-logo-icon" />
+                    <span>Solar<span className="text-yellow-400">Nova</span></span>
                 </Link>
 
                 {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="nav-links-desktop">
                     {['Home', 'Products', 'Solutions', 'About'].map((item) => (
                         <Link
                             key={item}
                             to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                            className="text-gray-300 hover:text-white transition-colors font-medium"
+                            className="nav-link"
                         >
                             {item}
                         </Link>
@@ -39,10 +39,10 @@ const Navbar = () => {
                 </div>
 
                 {/* Actions */}
-                <div className="hidden md:flex items-center gap-6">
-                    <button className="relative text-white hover:text-yellow-400 transition-colors">
-                        <ShoppingCart className="w-6 h-6" />
-                        <span className="absolute -top-1 -right-1 bg-yellow-400 text-black text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
+                <div className="nav-actions">
+                    <button className="nav-cart">
+                        <ShoppingCart size={24} />
+                        <span className="nav-cart-badge">0</span>
                     </button>
                     <Link to="/contact" className="btn btn-primary text-sm">
                         Get a Quote
@@ -51,10 +51,10 @@ const Navbar = () => {
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-white"
+                    className="mobile-toggle"
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 >
-                    {isMobileMenuOpen ? <X /> : <Menu />}
+                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                 </button>
             </div>
 
@@ -65,14 +65,14 @@ const Navbar = () => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden glass-panel border-t border-gray-800"
+                        className="mobile-menu"
                     >
-                        <div className="container py-4 flex flex-col gap-4">
+                        <div className="container mobile-menu-links">
                             {['Home', 'Products', 'Solutions', 'About', 'Contact'].map((item) => (
                                 <Link
                                     key={item}
                                     to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                                    className="text-gray-300 hover:text-white py-2"
+                                    className="mobile-nav-link"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {item}

@@ -9,9 +9,9 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <Router>
-      <div className="app min-h-screen flex flex-col bg-[#0f172a]">
+      <div className="app-layout">
         <Navbar />
-        <main className="flex-grow">
+        <main className="main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
